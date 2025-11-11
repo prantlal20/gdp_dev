@@ -1,5 +1,6 @@
 name: Python application
 
+# Trigger: jeder Push oder Pull Request auf "dev"
 on:
   push:
     branches: [ "dev" ]
@@ -15,18 +16,23 @@ jobs:
         python-version: [3.12]
 
     steps:
+    # Repository auschecken
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    # Python einrichten
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
+    # Abhängigkeiten installieren
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    # Tests ausführen
     - name: Run tests
-      run: pytest
+      run: |
+        pytest --maxfail=1 --disable-warnings -v
