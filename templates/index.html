@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Foto WebApp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Foto WebApp</h1>
+
+    <label>Projektordner wählen:</label>
+    <input type="text" id="folder" placeholder="z.B. Projekt1">
+
+    <video id="video" width="320" height="240" autoplay></video>
+    <button id="snap">Foto aufnehmen</button>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
